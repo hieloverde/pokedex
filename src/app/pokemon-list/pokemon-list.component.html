@@ -1,11 +1,6 @@
 <div class="resultsContainer">
-  <ul class="pokedex">
-    <li class="card" *ngFor='let aPokemon of paginatedList.results'>
-      <div>
-        <h2 class="card-title"> {{ aPokemon.name }}</h2>
-        <!--<p class="card-subtitle">Type: ${pokeman.type}</p>-->
-      </div>
-    </li>
+  <ul class="poke-dex">
+    <app-pokemon-card [pokemonResult]="aPokemon" *ngFor='let aPokemon of paginatedList.results'></app-pokemon-card>
   </ul>
 </div>
 

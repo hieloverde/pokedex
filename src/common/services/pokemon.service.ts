@@ -5,6 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Pokemon } from '../interfaces/pokemon';
 import { PokemonResult } from '../interfaces/pokemon-result';
 import { PaginatedList } from '../interfaces/paginated-list';
+import { PokemonImpl } from '../models/pokemon';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class PokemonService {
 
   private pokeAPIUrl = 'https://pokeapi.co/api/v2/pokemon';  // URL to web api
 
-  public resultLimit = 28;
+  public resultLimit = 12;
 
   constructor(private http: HttpClient) { }
 
@@ -32,17 +33,19 @@ export class PokemonService {
     );
   }
 
-  loadPokemon(pokemon: PokemonResult): Observable<Pokemon> {
-    return this.http.get<Pokemon>(pokemon.url).pipe(
-      catchError(this.handleError<Pokemon>(`loadPokemon url=${pokemon.url}`))
+  loadPokemon(pokemonResult: PokemonResult): Observable<PokemonImpl> {
+    return this.http.get(pokemonResult.url).pipe(
+      map((pokemon: any) => new PokemonImpl(pokemon.id, pokemon.name, pokemon.height, pokemon.weight, pokemon.sprites.front_default)),
+      catchError(this.handleError<PokemonImpl>(`loadPokemon url=${pokemonResult.url}`))
     );
   }
 
   /** GET pokemon by id */
-  findPokemonById(id: number): Observable<Pokemon> {
+  findPokemonById(id: number): Observable<PokemonImpl> {
     const url = `${this.pokeAPIUrl}/${id}`;
-    return this.http.get<Pokemon>(url).pipe(
-      catchError(this.handleError<Pokemon>(`getPokemonById id=${id}`))
+    return this.http.get<PokemonImpl>(url).pipe(
+      map((pokemon: any) => new PokemonImpl(pokemon.id, pokemon.name, pokemon.height, pokemon.weight, pokemon.sprites.front_default)),
+      catchError(this.handleError<PokemonImpl>(`getPokemonById id=${id}`))
     );
   }
 

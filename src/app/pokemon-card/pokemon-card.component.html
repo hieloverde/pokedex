@@ -1,0 +1,9 @@
+<li class="pokemon-card" *ngIf="ready">
+  <div>
+    <img class="image" [src]="pokemon.imageUrl" />
+    <h2 class="title">
+      <a [routerLink]="['/pokemon-detail', pokemon.id]">{{ pokemon.name }} ({{pokemon.id}}) </a>
+    </h2>
+    <p class="subtitle">Type: </p>
+  </div>
+</li>

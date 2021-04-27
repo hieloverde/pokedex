@@ -42,11 +42,6 @@ export class PokemonListComponent implements OnInit {
       .subscribe(paginatedList => this.paginatedList = paginatedList);
   }
 
-  loadPokemon(pokemonObj: PokemonResult): void {
-        this.pokemonService.loadPokemon(pokemonObj)
-      .subscribe(pokemon => console.log(`Pokemon loaded: `, pokemon));
-  }
-
   goToPageByOffset(pageNumber: number, pageOffset: number): void {
     this.pokemonService.getPokemonListByOffset(pageOffset)
       .subscribe((paginatedList) => {
@@ -65,7 +60,6 @@ export class PokemonListComponent implements OnInit {
 
   goNextPage(): void {
     if (this.currentPage < this.pages.length) {
-      console.log('this.paginatedList', this.paginatedList);
       this.currentPage = this.currentPage + 1;
       this.getPokemonList(this.paginatedList.next);
     }
