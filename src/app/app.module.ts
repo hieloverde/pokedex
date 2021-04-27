@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { InViewDirective } from '../common/directives/in-view.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonListComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    InViewDirective
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

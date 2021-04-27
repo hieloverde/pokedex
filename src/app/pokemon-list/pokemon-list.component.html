@@ -1,2 +1,23 @@
-<p>Pokemon List</p>
-<div *ngFor='let pList of pokemonList'> {{ pList.name }} </div>
+
+<div class="resultsContainer">
+  <ul class="pokedex">
+    <li class="card" *ngFor='let aPokemon of paginatedList.results'>
+      <div>
+        <h2 class="card-title"> {{ aPokemon.name }}</h2>
+        <!--<p class="card-subtitle">Type: ${pokeman.type}</p>-->
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="pageNumbersContainer">
+  <div class="pagePrevious" *ngIf="paginatedList.previous" (click)="goPreviousPage()">
+    <span> < </span>
+  </div>
+  <div *ngFor="let page of pages; let i = index">
+    <span class="pageNumber" *ngIf="i + 1 <= currentPage + 4 && i + 1 >= currentPage - 4" [ngClass]="{'currentPage': (i + 1 == currentPage)}"> {{ i + 1 }} </span>
+  </div>
+  <div class="pageNext" *ngIf="paginatedList.next" (click)="goNextPage()">
+    <span> > </span>
+  </div>
+</div>
