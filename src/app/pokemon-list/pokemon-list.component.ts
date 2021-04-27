@@ -3,6 +3,8 @@ import { PokemonService } from '../../common/services/pokemon.service';
 import { Pokemon } from '../../common/interfaces/pokemon';
 import { PokemonResult } from '../../common/interfaces/pokemon-result';
 import { PaginatedList } from '../../common/interfaces/paginated-list';
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -14,11 +16,19 @@ export class PokemonListComponent implements OnInit {
   paginatedList: PaginatedList = { count: 0, next: '', previous: '', results: [] };  // Hold the list of pokemon
   pages: number[] = [];
   currentPage = 1;
-  hola = 'algo bueno';
+  option: string | null = '';   // option can be 'all' or 'fav-only'
 
-  constructor(private pokemonService: PokemonService) { }
+  // Expose font awesome icons to be used
+  faArrowRight = faArrowRight;
+  faArrowLeft = faArrowLeft;
+
+  constructor(private pokemonService: PokemonService, private activatedroute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedroute.paramMap.subscribe(params => {
+      this.option = params.get('option');
+    });
+
     this.pokemonService.getPokemonListByOffset(0)
       .subscribe((paginatedList) => {
         this.paginatedList = paginatedList;
@@ -37,8 +47,12 @@ export class PokemonListComponent implements OnInit {
       .subscribe(pokemon => console.log(`Pokemon loaded: `, pokemon));
   }
 
-  testMethod(url: string): void {
-    console.log('executed!!', url);
+  goToPageByOffset(pageNumber: number, pageOffset: number): void {
+    this.pokemonService.getPokemonListByOffset(pageOffset)
+      .subscribe((paginatedList) => {
+        this.paginatedList = paginatedList;
+        this.currentPage = pageNumber;
+      });
   }
 
   // Paginator

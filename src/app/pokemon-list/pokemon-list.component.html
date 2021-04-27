@@ -1,4 +1,3 @@
-
 <div class="resultsContainer">
   <ul class="pokedex">
     <li class="card" *ngFor='let aPokemon of paginatedList.results'>
@@ -10,14 +9,14 @@
   </ul>
 </div>
 
-<div class="pageNumbersContainer">
+<div class="pageNumbers">
   <div class="pagePrevious" *ngIf="paginatedList.previous" (click)="goPreviousPage()">
-    <span> < </span>
+    <fa-icon [icon]="faArrowLeft"></fa-icon>
   </div>
-  <div *ngFor="let page of pages; let i = index">
-    <span class="pageNumber" *ngIf="i + 1 <= currentPage + 4 && i + 1 >= currentPage - 4" [ngClass]="{'currentPage': (i + 1 == currentPage)}"> {{ i + 1 }} </span>
+  <div *ngFor="let pageOffset of pages; let i = index">
+    <span (click)="goToPageByOffset(i+1, pageOffset)" class="pageNumber" *ngIf="i + 1 <= currentPage + 4 && i + 1 >= currentPage - 4" [ngClass]="{'currentPage': (i + 1 == currentPage)}"> {{ i + 1 }} </span>
   </div>
   <div class="pageNext" *ngIf="paginatedList.next" (click)="goNextPage()">
-    <span> > </span>
+    <fa-icon [icon]="faArrowRight"></fa-icon>
   </div>
 </div>

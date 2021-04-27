@@ -13,7 +13,7 @@ export class PokemonService {
 
   private pokeAPIUrl = 'https://pokeapi.co/api/v2/pokemon';  // URL to web api
 
-  public resultLimit = 27;
+  public resultLimit = 28;
 
   constructor(private http: HttpClient) { }
 
@@ -61,7 +61,7 @@ export class PokemonService {
     const pages = Math.floor(total / this.resultLimit);
     const result: number[] = [];
     for (let i = 0; i < pages; i++) {
-      result[i] = (i + 1) * this.resultLimit;
+      result[i] = i * this.resultLimit;
     }
     return result;
   }

@@ -5,7 +5,7 @@
 
 .pokedex {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 20px;
   padding-inline-start: 0;
 }
@@ -39,16 +39,22 @@
 }
 
 // Paginator
+.pageNumbers {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 0 40px 0;
+}
 
 .currentPage {
   font-weight: bold;
 }
 
-.pageNumbersContainer {
-  display: flex;
-  flex-direction: row;
-}
-
 .pageNumber {
   padding: 10px;
+  cursor: pointer;
+}
+
+.pageNext, .pagePrevious {
+  cursor: pointer;
 }
