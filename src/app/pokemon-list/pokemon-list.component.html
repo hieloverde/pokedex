@@ -1,10 +1,10 @@
 <div class="resultsContainer">
   <ul class="poke-dex">
-    <app-pokemon-card [pokemonResult]="aPokemon" *ngFor='let aPokemon of paginatedList.results'></app-pokemon-card>
+    <app-pokemon-card [listType]="option" [pokemonResult]="aPokemon" *ngFor='let aPokemon of paginatedList.results'></app-pokemon-card>
   </ul>
 </div>
 
-<div class="pageNumbers">
+<div class="pageNumbers" *ngIf="option == 'all'">
   <div class="pagePrevious" *ngIf="paginatedList.previous" (click)="goPreviousPage()">
     <fa-icon [icon]="faArrowLeft"></fa-icon>
   </div>

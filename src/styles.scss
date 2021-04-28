@@ -3,3 +3,19 @@
 a {
   text-decoration: none;
 }
+
+.favoriteStar {
+  font-size: 25px;
+  color: gold;
+  cursor: pointer;
+}
+
+.notFavoriteStar {
+  font-size: 25px;
+  color: lightgray;
+  cursor: pointer;
+}
+
+.favoriteControl {
+  text-align: right;
+}

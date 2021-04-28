@@ -1,4 +1,8 @@
 <li class="pokemon-card" *ngIf="ready">
+  <div class="favoriteControl">
+    <fa-icon class="favoriteStar" *ngIf="pokemon.isFavorite" [icon]="faStar" (click)="removeFromFavorites(pokemon.id)"></fa-icon>
+    <fa-icon class="notFavoriteStar" *ngIf="!pokemon.isFavorite" [icon]="faStar" (click)="addToFavorites(pokemon.id)"></fa-icon>
+  </div>
   <div>
     <img class="image" [src]="pokemon.imageUrl" />
     <h2 class="title">

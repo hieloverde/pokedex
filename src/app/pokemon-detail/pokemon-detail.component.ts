@@ -11,7 +11,7 @@ export class PokemonDetailComponent implements OnInit {
 
   constructor(private activatedroute: ActivatedRoute) { }
 
-  pokemon: PokemonImpl = new PokemonImpl(0, '', 0, 0, '');
+  pokemon: PokemonImpl = new PokemonImpl(0, '', 0, 0, '', false);
 
   ngOnInit(): void {
     // This Pokemon was loaded by a route resolver

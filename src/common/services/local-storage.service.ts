@@ -17,7 +17,7 @@ export class LocalStorageService {
 
   get(key: string): any {
     try {
-      return JSON.parse(localStorage.getItem(key));
+      return JSON.parse(localStorage.getItem(key) || '[]');
     } catch (e) {
       console.error('Error getting data', e);
       return null;

@@ -7,7 +7,8 @@ export class PokemonImpl implements Pokemon, Deserializable {
               public name: string,
               public height: number,
               public weight: number,
-              public imageUrl: string) {}
+              public imageUrl: string,
+              public isFavorite: boolean) {}
 
   deserialize(input: any): this {
     Object.assign(this, input);
