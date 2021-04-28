@@ -1,8 +1,8 @@
 <li class="pokemon-card" *ngIf="ready">
-  <div class="favoriteControl">
-    <div class="pokemonId">{{pokemon.id}}</div>
-    <fa-icon class="favoriteStar" *ngIf="pokemon.isFavorite" [icon]="faStar" (click)="removeFromFavorites(pokemon.id)"></fa-icon>
-    <fa-icon class="notFavoriteStar" *ngIf="!pokemon.isFavorite" [icon]="faStar" (click)="addToFavorites(pokemon.id)"></fa-icon>
+  <div class="favorite-control">
+    <div class="pokemon-id">{{pokemon.id}}</div>
+    <fa-icon class="favorite-star" *ngIf="pokemon.isFavorite" [icon]="faStar" (click)="removeFromFavorites(pokemon.id)"></fa-icon>
+    <fa-icon class="not-favorite-star" *ngIf="!pokemon.isFavorite" [icon]="faStar" (click)="addToFavorites(pokemon.id)"></fa-icon>
   </div>
   <div [routerLink]="['/pokemon-detail', pokemon.id]">
     <img class="image" [src]="pokemon.imageUrl" />

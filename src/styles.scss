@@ -18,18 +18,18 @@ a {
   text-decoration: none;
 }
 
-.favoriteStar {
+.favorite-star {
   font-size: 25px;
   color: $favorite-color;
   cursor: pointer;
 }
 
-.notFavoriteStar {
+.not-favorite-star {
   font-size: 25px;
   color: $not-favorite-color;
   cursor: pointer;
 }
 
-.favoriteControl {
+.favorite-control {
   text-align: right;
 }

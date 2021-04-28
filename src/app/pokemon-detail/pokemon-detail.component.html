@@ -1,3 +1,25 @@
-<p>pokemon-detail works!</p>
+<div class="pokemon-detail">
+  <div class="pokemon-card">
+    <div class="favorite-control">
+      <div class="pokemon-id">{{pokemon.id}}</div>
+      <fa-icon class="favorite-star" *ngIf="pokemon.isFavorite" [icon]="faStar" (click)="removeFromFavorites(pokemon.id)"></fa-icon>
+      <fa-icon class="not-favorite-star" *ngIf="!pokemon.isFavorite" [icon]="faStar" (click)="addToFavorites(pokemon.id)"></fa-icon>
+      <h2 class="title">{{ pokemon.name }}</h2>
+    </div>
+    <div [routerLink]="['/pokemon-detail', pokemon.id]">
+      <div class="pokemon-detail">
+        <div>
+          <img class="image" [src]="pokemon.imageUrl" />
+        </div>
+        <div class="pokemon-detail-columns">
+          <ul class="list-subtitle">
+            <li class="subtitle">Type: <b>{{ pokemon.type }}</b></li>
+            <li class="subtitle">Weight: <b>{{ pokemon.weight }}</b></li>
+            <li class="subtitle">Height: <b>{{ pokemon.height }}</b></li>
+          </ul>
+        </div>
+      </div>
 
-<h1>{{pokemon.name}}</h1>
+    </div>
+  </div>
+</div>

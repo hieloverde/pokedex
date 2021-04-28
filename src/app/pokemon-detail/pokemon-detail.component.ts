@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {PokemonImpl} from '../../common/models/pokemon';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import {PokemonService} from '../../common/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -9,7 +11,9 @@ import {PokemonImpl} from '../../common/models/pokemon';
 })
 export class PokemonDetailComponent implements OnInit {
 
-  constructor(private activatedroute: ActivatedRoute) { }
+  constructor(private activatedroute: ActivatedRoute, private pokemonService: PokemonService) { }
+
+  faStar = faStar;
 
   pokemon: PokemonImpl = new PokemonImpl(0, '', 0, 0, '', false, '');
 
@@ -17,6 +21,16 @@ export class PokemonDetailComponent implements OnInit {
     // This Pokemon was loaded by a route resolver
     this.pokemon = this.activatedroute.snapshot.data.pokemon;
     // console.log('this.pokemon', this.pokemon);
+  }
+
+  addToFavorites(id: number): void {
+    this.pokemonService.addToFavorites(id);
+    this.pokemon.isFavorite = true;
+  }
+
+  removeFromFavorites(id: number): void {
+    this.pokemonService.removeFromFavorites(id);
+    this.pokemon.isFavorite = false;
   }
 
 }
