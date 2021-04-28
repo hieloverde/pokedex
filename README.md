@@ -1,10 +1,13 @@
 # Pokédex
 
-This is a Pokédex generated as an example to demonstrate development capabilities using angular 11
+This is a simple Pokédex developed using angular 11
 
 ## Implemented functionality
 
-* Progressive Web App (PWA)
+* List all the available pokemon from pokeapi.co and page the results
+* Mark one or more pokemon as favorite (save in local storage)
+* Find a pokemon by name or id
+* Get a simple detail page of each pokemon
 
 ## Development server
 

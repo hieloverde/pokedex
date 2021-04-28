@@ -8,7 +8,6 @@ import {PokemonService} from '../common/services/pokemon.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Pokédex';
   searchValue = '';
 
   constructor(private router: Router, public pokemonService: PokemonService) {

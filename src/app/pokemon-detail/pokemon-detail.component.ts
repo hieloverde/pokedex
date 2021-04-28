@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {PokemonImpl} from '../../common/models/pokemon';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import {PokemonService} from '../../common/services/pokemon.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -11,7 +12,10 @@ import {PokemonService} from '../../common/services/pokemon.service';
 })
 export class PokemonDetailComponent implements OnInit {
 
-  constructor(private router: Router, private activatedroute: ActivatedRoute, private pokemonService: PokemonService) { }
+  constructor(private router: Router,
+              private activatedroute: ActivatedRoute,
+              private pokemonService: PokemonService,
+              private titleService: Title) { }
 
   faStar = faStar;
 
@@ -21,10 +25,10 @@ export class PokemonDetailComponent implements OnInit {
     // This Pokemon was loaded by a route resolver
     this.pokemon = this.activatedroute.snapshot.data.pokemon;
     if (typeof this.pokemon === 'undefined') {
-      console.log('redirecting...');
+      console.log('this.pokemon redirecting', this.pokemon);
       this.router.navigate(['/pokemon-list', 'all']);
     }
-    console.log('this.pokemon', this.pokemon);
+    this.titleService.setTitle(`${this.pokemon.name} | Pokédex`);
   }
 
   addToFavorites(id: number): void {

@@ -4,6 +4,7 @@ import { PokemonResult } from '../../common/interfaces/pokemon-result';
 import { PaginatedList } from '../../common/interfaces/paginated-list';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -11,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
+  pageTitle = 'This is a simple Pokédex';
 
   paginatedList: PaginatedList = { count: 0, next: '', previous: '', results: [] };  // Hold the list of pokemon
   pages: number[] = [];
@@ -21,7 +23,7 @@ export class PokemonListComponent implements OnInit {
   faArrowRight = faArrowRight;
   faArrowLeft = faArrowLeft;
 
-  constructor(private pokemonService: PokemonService, private activatedroute: ActivatedRoute) { }
+  constructor(private pokemonService: PokemonService, private activatedroute: ActivatedRoute, private titleService: Title) { }
 
   ngOnInit(): void {
     setInterval(() => {
@@ -33,9 +35,11 @@ export class PokemonListComponent implements OnInit {
 
       switch (this.option) {
         case 'all':
+          this.titleService.setTitle(this.pageTitle);
           this.loadAll();
           break;
         case 'fav-only':
+          this.titleService.setTitle('Pokédex favorites list');
           this.loadFavorites();
           break;
       }

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { Pokemon } from '../interfaces/pokemon';
 import { PokemonResult } from '../interfaces/pokemon-result';
 import { PaginatedList } from '../interfaces/paginated-list';
 import { PokemonImpl } from '../models/pokemon';
