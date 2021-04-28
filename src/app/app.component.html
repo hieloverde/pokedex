@@ -1,6 +1,9 @@
+<span [routerLink]="['/pokemon-list','all']" class="page-title">Pokédex</span>
 <nav class="navigation">
   <a class="button" [routerLink]="['/pokemon-list','all']" routerLinkActive="active-button">Full list</a>
   <a class="button" [routerLink]="['/pokemon-list','fav-only']" routerLinkActive="active-button">Favorites</a>
+  <input type="text" class="pokemon-search-field" id="searchValue" name="searchValue" [(ngModel)]="searchValue" placeholder="Pokemon Id or Name">
+  <a class="active-button" (click)="search()" >Search</a>
 </nav>
 
 <router-outlet></router-outlet>

@@ -66,13 +66,17 @@ export class PokemonService {
   }
 
   /** GET pokemon by name */
-  findPokemonByName(term: string): Observable<Pokemon[]> {
-    if (!term.trim()) {
-      // if not search term, return empty pokemon array.
-      return of([]);
-    }
-    return this.http.get<Pokemon[]>(`${this.pokeAPIUrl}/${term}`).pipe(
-      catchError(this.handleError<Pokemon[]>('findPokemonByName', []))
+  findPokemonByName(term: string): Observable<PokemonImpl> {
+    return this.http.get<PokemonImpl>(`${this.pokeAPIUrl}/${term}`).pipe(
+      map((pokemon: any) => new PokemonImpl(
+        pokemon.id,
+        pokemon.name,
+        pokemon.height,
+        pokemon.weight,
+        pokemon.sprites.front_default,
+        this.isPokemonInFavorite(pokemon.id),
+        pokemon.types.map((type: any) => type.type.name).join(', '))),
+      catchError(this.handleError<PokemonImpl>('findPokemonByName term=' + term))
     );
   }
 

@@ -10,6 +10,7 @@ import { InViewDirective } from '../common/directives/in-view.directive';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.componen
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

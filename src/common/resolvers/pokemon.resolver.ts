@@ -16,6 +16,10 @@ export class PokemonResolver implements Resolve<PokemonImpl> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<PokemonImpl> {
     const pokemonId: number = Number(route.paramMap.get('id'));
-    return this.pokemonService.findPokemonById(pokemonId);
+    if (isNaN(pokemonId)) {
+      return this.pokemonService.findPokemonByName(route.paramMap.get('id') || '');
+    } else {
+      return this.pokemonService.findPokemonById(pokemonId);
+    }
   }
 }

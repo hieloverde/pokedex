@@ -7,6 +7,6 @@
   <div [routerLink]="['/pokemon-detail', pokemon.id]">
     <img class="image" [src]="pokemon.imageUrl" />
     <h2 class="title">{{ pokemon.name }}</h2>
-    <p class="subtitle">Type: {{ pokemon.type }} </p>
+    <p class="subtitle">Type: <b>{{ pokemon.type }}</b> </p>
   </div>
 </li>
