@@ -1,18 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 
+// Variables
+// TODO: this should be in a separated file
+$main-background: #ff4d4d;
+$main-text-color:     black;
+$favorite-color:      gold;
+$not-favorite-color:  lightgray;
+
+// Main style
+body {
+  background-color: $main-background;
+  margin: 0;
+  font-family: rubik;
+}
+
 a {
   text-decoration: none;
 }
 
 .favoriteStar {
   font-size: 25px;
-  color: gold;
+  color: $favorite-color;
   cursor: pointer;
 }
 
 .notFavoriteStar {
   font-size: 25px;
-  color: lightgray;
+  color: $not-favorite-color;
   cursor: pointer;
 }
 

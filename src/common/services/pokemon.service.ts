@@ -43,7 +43,8 @@ export class PokemonService {
         pokemon.height,
         pokemon.weight,
         pokemon.sprites.front_default,
-        this.isPokemonInFavorite(pokemon.id))),
+        this.isPokemonInFavorite(pokemon.id),
+        pokemon.types.map((type: any) => type.type.name).join(', '))),
       catchError(this.handleError<PokemonImpl>(`loadPokemon url=${pokemonResult.url}`))
     );
   }
@@ -58,7 +59,8 @@ export class PokemonService {
         pokemon.height,
         pokemon.weight,
         pokemon.sprites.front_default,
-        this.isPokemonInFavorite(pokemon.id))),
+        this.isPokemonInFavorite(pokemon.id),
+        pokemon.types.map((type: any) => type.type.name).join(', '))),
       catchError(this.handleError<PokemonImpl>(`getPokemonById id=${id}`))
     );
   }

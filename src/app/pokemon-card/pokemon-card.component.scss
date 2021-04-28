@@ -1,15 +1,23 @@
+$pokemon-name-color:  #4500a9;
+
 .pokemon-card {
+
   list-style: none;
   padding: 40px;
   background-color: #f4f4f4;
   color: #222;
   text-align: center;
+  border-radius: 14px;
+  max-width: 320px;
+  border: 5px solid black;
+  box-shadow: 5px 10px;
 
-  .title {
+  .title, a {
     text-transform: capitalize;
     margin-bottom: 0px;
     font-size: 32px;
     font-weight: normal;
+    color: $pokemon-name-color;
   }
 
   .subtitle {
@@ -17,7 +25,13 @@
     color: #666;
     font-weight: lighter;
   }
+
   .image {
     height: 180px;
+  }
+
+  .pokemonId {
+    float:left;
+    font-size: 30px;
   }
 }

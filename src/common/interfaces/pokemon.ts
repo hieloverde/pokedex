@@ -5,4 +5,5 @@ export interface Pokemon {
   weight: number;
   imageUrl: string;
   isFavorite: boolean;
+  type: string;
 }
