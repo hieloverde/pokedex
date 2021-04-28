@@ -9,6 +9,10 @@ This is a simple Pokédex developed using angular 11
 * Find a pokemon by name or id
 * Get a simple detail page of each pokemon
 
+## Watch it live
+
+http://pokedex.alvarez.website/
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
