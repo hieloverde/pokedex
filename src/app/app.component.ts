@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
+import {PokemonService} from '../common/services/pokemon.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   title = 'Pokédex';
   searchValue = '';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public pokemonService: PokemonService) {
   }
 
   search(): void {

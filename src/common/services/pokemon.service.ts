@@ -17,6 +17,7 @@ export class PokemonService {
 
   public resultLimit = 12;
   private favoritesKey = 'PokeDexFavorites';
+  public errors: string[] = [];
 
   constructor(private http: HttpClient, private localStorageService: LocalStorageService) { }
 
@@ -135,7 +136,9 @@ export class PokemonService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.log(`${operation} failed: ${error.message}`);
+      const errorMsg = `${operation} failed: ${error.message}`;
+      this.errors.push(errorMsg);
+      console.log(errorMsg);
       return of(result as T);
     };
   }

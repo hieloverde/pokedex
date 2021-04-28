@@ -24,6 +24,10 @@ export class PokemonListComponent implements OnInit {
   constructor(private pokemonService: PokemonService, private activatedroute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    setInterval(() => {
+      this.pokemonService.errors = [];
+    }, 10000);
+
     this.activatedroute.paramMap.subscribe(params => {
       this.option = params.get('option') || 'all';
 
