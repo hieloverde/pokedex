@@ -6,13 +6,14 @@ import { PokemonResult } from '../interfaces/pokemon-result';
 import { PaginatedList } from '../interfaces/paginated-list';
 import { PokemonImpl } from '../models/pokemon';
 import {LocalStorageService} from './local-storage.service';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
 
-  private pokeAPIUrl = 'https://pokeapi.co/api/v2/pokemon';  // URL to web api
+  private pokeAPIUrl = environment.pokeAPIUrl;  // URL to web api
 
   public resultLimit = 12;
   private favoritesKey = 'PokeDexFavorites';
